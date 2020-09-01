@@ -8,7 +8,6 @@ from save import save_to_file
 os.system("clear")
 alba_url = "http://www.alba.co.kr"
 
-
 results = requests.get(alba_url)
 soup = BeautifulSoup(results.text, "html.parser")
 company_box = soup.find("div", {"id": "MainSuperBrand"}).find_all("a", {"class": "goodsBox-info"})

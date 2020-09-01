@@ -16,12 +16,17 @@ def extract_jobObj(job):
     jobObj["job_compnay"] = title.find("span", {"class": "company"}).text
     #job_title = title.find("span", {"class": "title"}).text
   for data in job_datas:
-    jobObj["job_data"] = data.find("span", {"class": "time"}).text
+    job_date = data.find("span", {"class": "time"})
+    if job_date:
+      jobObj["job_data"] = data.find("span", {"class": "time"}).text
+    else:
+      jobObj["job_data"] = ''
   for pay in job_pays:
     payIcon, number = pay.find_all("span")
     jobObj["job_pay"] = payIcon.text + number.text
   for regDate in job_regDates:
     jobObj["job_regDate"] = regDate.text
+    print(jobObj["job_regDate"])
   return jobObj
 
 
